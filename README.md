@@ -1,1 +1,1 @@
-# i-Awoo-Tienda-Generica-Ciclo3MinTic
+# Tienda-Generica-Ciclo3MinTic
