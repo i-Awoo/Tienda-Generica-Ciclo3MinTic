@@ -37,7 +37,7 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Información del usuario: ").append(request.getContextPath());
 		
 	}
 
@@ -85,18 +85,30 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 			//Agregar el usuario usando el formulario.
 		case 1:
 			try {
-				mU.AgregarUsuario(new usuario(Integer.parseInt(request.getParameter("cedula")),
-				request.getParameter("nombre"), request.getParameter("email"), 
-				request.getParameter("usuario"), request.getParameter("password")));
-				response.sendRedirect("usuarioagregado.jsp");
-			break;
+				
+				if(mU.UsuarioExiste(Long.parseLong(request.getParameter("cedula")))) {
+					System.out.println("Error usuario ya existe");
+					response.sendRedirect("usuarioerrorexistente.jsp");
+					}
+				else {
+							mU.AgregarUsuario(new usuario(Integer.parseInt(request.getParameter("cedula")),
+							request.getParameter("nombre"), request.getParameter("email"), 
+							request.getParameter("usuario"), request.getParameter("password")));
+							response.sendRedirect("usuarioagregado.jsp");}
+				break;
 			}
 			catch(Exception e){
 				System.out.println("Error");
-				response.sendRedirect("usuarios.jsp");
+				response.sendRedirect("usuarioerror.jsp");
 			}
 			//Modificar el usuario usando el formulario, se usa el número de cedula para modificarlo.
 		case 2:
+			if (request.getParameter("cedula").equals("1")) {
+				System.out.println("Error: No se puede modificar al administrador.");
+				response.sendRedirect("usuarioerror.jsp");
+				break;
+				
+			}else {
 			usuario usuarioModificado = null;
 			int indiceUsuario = mU.ObtenerIndiceUsuario(Integer.parseInt(request.getParameter("cedula")));
 			usuarioModificado = mU.BuscarUsuario(Integer.parseInt(request.getParameter("cedula")));
@@ -113,16 +125,24 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 				response.sendRedirect("usuarioerror.jsp");
 				break;
 			}
+			}
 			//Eliminar el usuario, usando su numero de cedula.
 		case 3:
+			if (request.getParameter("cedula").equals("1")) {
+				System.out.println("Error: No se puede eliminar al administrador.");
+				response.sendRedirect("usuarioerror.jsp");
+				break;
+			}else {
 			try {
 				mU.EliminarUsuario(mU.ObtenerIndiceUsuario(Integer.parseInt(request.getParameter("cedula"))));
 				response.sendRedirect("usuarioeliminado.jsp");
 				break;
+				
 			}
 			catch(Exception e) {
 				System.out.println("Error");
-				response.sendRedirect("usuarios.jsp");
+				response.sendRedirect("usuarioerror.jsp");
+			}
 			}
 		}
 		

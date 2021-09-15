@@ -18,12 +18,28 @@ public class modelUsuarios {
 	public void CrearLista() throws IOException {
 		usuarios = new ArrayList<>();
 		System.out.println("Lista creada");
-		//Agregar usuario por defecto
-		usuario admin = new usuario(1, "Administrador", "-", "admininicial" , "admin123456");
-		this.AgregarUsuario(admin);		
-		System.out.println("Admin agregado");
-		this.CrearArchivoCSV();
+
+		if (ExisteArchivoCSV()) {System.out.println("CSV ya existe, omitiendo creación.");
+		}
+		else {
+			System.out.println("Creando CSV");
+			this.CrearArchivoCSV();
+			//Agregar usuario por defecto
+			usuario admin = new usuario(1, "Administrador", "-", "admininicial" , "admin123456");
+			this.AgregarUsuario(admin);		
+			System.out.println("Admin agregado");
+		}
+		
 		this.ObtenerUsuariosDeCSV();
+		
+	}
+	
+	//Revisa si el archivo CSV ya existe.
+	private boolean ExisteArchivoCSV() {
+		File tmpDir = new File(rutaCSV);
+		boolean existe = tmpDir.exists();
+		return existe;
+		
 	}
 	
 	//Se crea un archivo CSV
@@ -99,6 +115,19 @@ public class modelUsuarios {
 		return usuarioEncontrado;
 	}
 	
+	//Chequea si el usuario con ese número de cedula ya existe.
+	public boolean UsuarioExiste(long cedula) {
+		boolean Existe = false;
+		for(usuario usuario : usuarios) {
+			if(usuario.getCedula()==cedula) {
+				Existe = true;
+			}
+		}
+		System.out.println("Usuario Existe: "+Existe);
+		return Existe;
+	
+	}
+	
 	
 	//Modelo usado para modificar el usuario en la lista.
 	public void ModificarUsuario(int id, usuario nuevosDatosUsuario) throws IOException {
@@ -136,9 +165,38 @@ public class modelUsuarios {
 				break;
 			}else {
 				usuariosStrings = line.split(",");
-				listResult.add(new usuario(Long.parseLong(usuariosStrings[0]), 
-						usuariosStrings[1],usuariosStrings[2] ,usuariosStrings[3], 
-						usuariosStrings[4]));
+				usuario tempUsuario = new usuario(0, "", "", "", "");
+				tempUsuario.setCedula(Long.parseLong(usuariosStrings[0]));
+				try {
+				if (usuariosStrings[1].isEmpty()) {}
+				else tempUsuario.setNombre(usuariosStrings[1]);
+				}
+				catch (Exception e) {
+					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Faltan datos.");
+				}
+				try {
+				if (usuariosStrings[2].isEmpty()) {}
+				else tempUsuario.setCorreo(usuariosStrings[2]);
+				}
+				catch (Exception e) {
+					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Faltan datos.");
+				}
+				try {
+				if (usuariosStrings[3].isEmpty()) {}
+				else tempUsuario.setUsuario(usuariosStrings[3]);
+				}catch (Exception e) {
+					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Faltan datos.");
+				}
+				try {
+				if (usuariosStrings[4].isEmpty()) {}
+				else tempUsuario.setPassword(usuariosStrings[4]);
+				}				catch (Exception e) {
+					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Faltan datos.");
+				}
+
+				
+				listResult.add(tempUsuario);
+				
 				}
 			}
 		}
