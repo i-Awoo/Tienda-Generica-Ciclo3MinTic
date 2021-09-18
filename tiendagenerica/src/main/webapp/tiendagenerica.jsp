@@ -9,23 +9,25 @@
     <title>Tienda genérica</title>
 </head>
 <body>
-           <header class="header">
+            <header class="header">
                 <div class="container logo-nav-container">
-                    <a href="#" class="logo">Tienda genérica</a>
-                    <span class="menu-icon">Ver menú</span>
-                    <nav class="navigation">
+                    <a href="tiendagenerica.jsp" class="logo">Tienda genérica</a>
+				</div>
+			</header>                  
+				  <!--span class="menu-icon">Ver menú</span>-->
+			     <nav class="navigation">
+					<div class="container logo-nav-container">
                         <ul>
                         <li><a href="usuarios.jsp">Usuarios</a></li>
-                        <li><a href="#">Clientes</a></li>
-                        <li><a href="#">Proveedores</a></li>
+                        <li><a href="clientes.jsp">Clientes</a></li>
+                        <li><a href="proveedores.jsp">Proveedores</a></li>
                         <li><a href="#">Productos</a></li>
                         <li><a href="#">Ventas</a></li>
                         <li><a href="#">Reportes</a></li>
                         </ul>
-                    </nav>
-                </div>
-            </header>
-                        <main class="main">
+					</div>	
+                </nav>
+           <main class="main">
                 <div class="container">
                     <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
                     Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 

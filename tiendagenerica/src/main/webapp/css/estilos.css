@@ -15,20 +15,19 @@ h1{
     text-align:center;
     line-height: 1.3em;
 }
-
-
 /* estilo botones*/
 .boton1 button{
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(132, 135, 146);
     color:rgb(255, 255, 255);
     border-radius: 15px;
-    border-style: hidden;
-    border-color:rgb(255, 255, 255) ;
+    border-style: solid;
+    border-color: grey;
     font-size: 20px;
     width: 130px;
     height: 50px;
     float: center;
+	margin-right:40px;
 }
 /* estilo formularios*/
 .container1{
@@ -42,10 +41,25 @@ h1{
     margin-left: 50px;
 }
 .tres{
-    margin-left: 165px;
+    margin-left: 164px;
 }
 .cuatro{
     margin-left: 55px;
+}
+.cinco{
+    margin-left: 149px;
+}
+.seis{
+    margin-left: 132px;
+}
+.siete{
+    margin-left: 36px;
+}
+.ocho{
+    margin-left: 230px;
+}
+.nueve{
+    margin-left: 143px;
 }
 /* estilo formularios de usuario*/
 .usuario1{
@@ -58,22 +72,31 @@ h1{
 .container{
     width: 85%;
     max-width: 850px;
+	min-width: 850px;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+.container2{
+    width: 85%;
+    max-width: 950px;
+	min-width: 950px;
     margin: 0 auto;
     font-size: 20px;
 }
 /* estilo cabecera página tienda genérica*/
 .header{
-    background: gray;
+    background: #A5A5A5;
     color: white;
     padding: 2rem 0;
-
-    position: fixed;
     left: 0;
     top: 0;
     width: 100%; 
+	border-style: solid;
+	border-color: grey;
 }
 .header a{
-    color:white;
+    color: white;
     text-decoration: none;
 }
 /* estilo logo de cabecera página tienda genérica*/
@@ -86,6 +109,17 @@ h1{
 .menu-icon{
     display: none;
 }
+
+.navigation{
+	background: white;
+	color: #A5A5A5;
+	height: 50px;
+	left: 0;
+    top: 95px;
+    width: 100%;
+	border-bottom-style: solid;
+	border-color: grey;
+}
 /* estilo botones navegacion cabezera página tienda genérica*/
 .navigation ul{
     margin: 0;
@@ -95,22 +129,33 @@ h1{
     .navigation ul li{
         display: inline-block;
     }
+		.navigation ul li.active a{
+			color:grey;
+		}
         .navigation ul li a{
             display: block;
-            padding: 0.5rem 0.5rem;
-            transition: all 0.4s linear;
+            padding: 0.8rem 0.5rem;
+            transition: all 0.3s linear;
             border-radius: 5%;
+			text-decoration: none;
+			color: rgb(132, 135, 146);
+			
         }
             .navigation ul li a:hover{
                 background: #CCC;
+				color: black;
             }
+				
 
 .main{
     padding-top: 12rem;
 }
+.main2{
+    padding-top: 6rem;
+}
 /* estilo pie de página tienda genérica*/
 .footer{
-    background: gray;
+    background: #A5A5A5;
     color: white;
     padding: 1rem 0;
     text-align: center;

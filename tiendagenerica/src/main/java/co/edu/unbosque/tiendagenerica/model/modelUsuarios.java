@@ -99,7 +99,6 @@ public class modelUsuarios {
 			if(usuarios.get(i).getCedula()==cedula) {
 				id = i;
 			}
-			else id = -1;
 		}
 		return id;
 	}
@@ -172,26 +171,26 @@ public class modelUsuarios {
 				else tempUsuario.setNombre(usuariosStrings[1]);
 				}
 				catch (Exception e) {
-					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Faltan datos.");
+					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Falta nombre.");
 				}
 				try {
 				if (usuariosStrings[2].isEmpty()) {}
 				else tempUsuario.setCorreo(usuariosStrings[2]);
 				}
 				catch (Exception e) {
-					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Faltan datos.");
+					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Falta correo.");
 				}
 				try {
 				if (usuariosStrings[3].isEmpty()) {}
 				else tempUsuario.setUsuario(usuariosStrings[3]);
 				}catch (Exception e) {
-					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Faltan datos.");
+					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Falta Usuario.");
 				}
 				try {
 				if (usuariosStrings[4].isEmpty()) {}
 				else tempUsuario.setPassword(usuariosStrings[4]);
 				}				catch (Exception e) {
-					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Faltan datos.");
+					System.out.println("Usuario con cedula "+usuariosStrings[0]+" no pudo agregarse correctamente, Falta contraseña.");
 				}
 
 				

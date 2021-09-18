@@ -134,8 +134,8 @@ public class tgServlet_usuario_crud extends HttpServlet {
 				
 			}else {
 			usuario usuarioModificado = null;
-			int indiceUsuario = mU.ObtenerIndiceUsuario(Integer.parseInt(request.getParameter("cedula")));
-			usuarioModificado = mU.BuscarUsuario(Integer.parseInt(request.getParameter("cedula")));
+			int indiceUsuario = mU.ObtenerIndiceUsuario(Long.parseLong(request.getParameter("cedula")));
+			usuarioModificado = mU.BuscarUsuario(Long.parseLong(request.getParameter("cedula")));
 			if (indiceUsuario >= 0) {
 				usuarioModificado.setNombre(request.getParameter("nombre"));
 				usuarioModificado.setCorreo(request.getParameter("email"));
@@ -167,7 +167,7 @@ public class tgServlet_usuario_crud extends HttpServlet {
 				break;
 			}else {
 			try {
-				mU.EliminarUsuario(mU.ObtenerIndiceUsuario(Integer.parseInt(request.getParameter("cedula"))));
+				mU.EliminarUsuario(mU.ObtenerIndiceUsuario(Long.parseLong(request.getParameter("cedula"))));
 				mensaje = "Usuario eliminado.";
 				color = "Blue";
 			    request.setAttribute("mensaje", mensaje);

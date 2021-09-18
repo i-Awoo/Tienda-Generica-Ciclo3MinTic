@@ -12,10 +12,11 @@
             <header class="header">
                 <div class="container logo-nav-container">
                     <a href="tiendagenerica.jsp" class="logo">Tienda genérica</a>
-                </div>
-            </header>
-             <!-- span class="menu-icon">Ver menú</span>-->
-           		 <nav class="navigation">
+				</div>
+			</header>                  
+				  <!--span class="menu-icon">Ver menú</span>-->
+			
+                <nav class="navigation">
 					<div class="container logo-nav-container">
                         <ul>
                         <li><a href="usuarios.jsp">Usuarios</a></li>
@@ -28,23 +29,25 @@
 					</div>	
                 </nav>
                 
+            
             <main class="main">
-                <div class="container">
+                <div class="container2">
                     <div class="container1">
-                    <form action="./tgServlet_usuario_crud" method="post">
+                    <form action="./tgServlet_clientes_crud" method="post">
                         <div class="usuario1">
                             Cédula 
                             <input type="text" name="cedula" class="tres"><br>
                             Nombre Completo  
                             <input type="text" name="nombre" class="dos"><br>
-                            Correo electrónico
-                            <input type="email" name="email" class="dos"><br>
+                            Dirección 
+                            <input type="text" name="direccion" class="seis"><br>
                         </div>
                         <div class="usuario2">
-                            Usuario 
-                            <input type="text" name="usuario" class="cuatro"><br>
-                            Contraseña  
-                            <input type="password" name="password" class="dos"><br>
+                            Telefono 
+                            <input type="text" name="telefono" class="cinco"><br>
+							Correo electrónico
+                            <input type="email" name="email" class="dos"><br>
+                           
                         </div>
                         <br><br><br><br><br>
                         <div class="boton1">
@@ -63,5 +66,5 @@
                     <p>Página diseñada por GRUPO 01-17</p>
                 </div>
             </footer>
-</body>
-</html>
+        </body>
+    </html>
