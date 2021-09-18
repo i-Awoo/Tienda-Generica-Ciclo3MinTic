@@ -13,10 +13,10 @@ import co.edu.unbosque.tiendagenerica.model.modelUsuarios;
 import co.edu.unbosque.tiendagenerica.model.usuario;
 
 /**
- * Servlet implementation class tgServlet_CrearUsuario
+ * Servlet implementation class tgServlet_usuario_crud
  */
-@WebServlet("/tgServlet_CrearUsuario")
-public class tgServlet_CrearUsuario extends HttpServlet {
+@WebServlet("/tgServlet_usuario_crud")
+public class tgServlet_usuario_crud extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private usuario cacheUsuario; 
 	modelUsuarios mU = new modelUsuarios();
@@ -26,7 +26,7 @@ public class tgServlet_CrearUsuario extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public tgServlet_CrearUsuario() {
+    public tgServlet_usuario_crud() {
         super();
         // TODO Auto-generated constructor stub
         mU.ObtenerUsuariosDeCSV();
@@ -49,6 +49,9 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 		doGet(request, response);
 		System.out.println( "pulsaste el botón " + request.getParameter("button"));
 		int botonPulsado = Integer.parseInt(request.getParameter("button"));
+		String color = "red";
+		String mensaje = "Error";
+		
 		
 		//Switch usado para el manejo de los botones del JSP de usuarios.
 		switch (botonPulsado) {
@@ -56,7 +59,10 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 		case 0:
 			if (request.getParameter("cedula").isBlank()){
 				System.out.println("Error");
-				response.sendRedirect("usuarioerror.jsp");
+				mensaje = "El campo de cédula está vacio.";
+			    request.setAttribute("color", color);
+			    request.setAttribute("mensaje", mensaje);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 				break;				
 			}else {
 			cacheUsuario = null;
@@ -77,8 +83,10 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 				break;
 			}
 			catch(Exception e) {
-				System.out.println("Error");
-				response.sendRedirect("usuarionoencontrado.jsp");
+				mensaje = "El usuario no existe.";
+			    request.setAttribute("color", color);
+			    request.setAttribute("mensaje", mensaje);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 				break;
 			}
 			}
@@ -88,24 +96,40 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 				
 				if(mU.UsuarioExiste(Long.parseLong(request.getParameter("cedula")))) {
 					System.out.println("Error usuario ya existe");
-					response.sendRedirect("usuarioerrorexistente.jsp");
+					mensaje = "El usuario ya existe.";
+				    request.setAttribute("color", color);
+				    request.setAttribute("mensaje", mensaje);
+				    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 					}
 				else {
 							mU.AgregarUsuario(new usuario(Integer.parseInt(request.getParameter("cedula")),
 							request.getParameter("nombre"), request.getParameter("email"), 
 							request.getParameter("usuario"), request.getParameter("password")));
-							response.sendRedirect("usuarioagregado.jsp");}
+							color = "blue";
+							mensaje = "Usuario agregado.";
+						    request.setAttribute("color", color);
+						    request.setAttribute("mensaje", mensaje);
+						    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 				break;
+				}
 			}
 			catch(Exception e){
 				System.out.println("Error");
-				response.sendRedirect("usuarioerror.jsp");
+				mensaje = "El campo de cédula está vacio.";
+			    request.setAttribute("color", color);
+			    request.setAttribute("mensaje", mensaje);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 			}
 			//Modificar el usuario usando el formulario, se usa el número de cedula para modificarlo.
 		case 2:
-			if (request.getParameter("cedula").equals("1")) {
+			if (request.getParameter("cedula").equals("1") || request.getParameter("cedula").isBlank()) {
 				System.out.println("Error: No se puede modificar al administrador.");
-				response.sendRedirect("usuarioerror.jsp");
+				if (request.getParameter("cedula").equals("1")) {
+				mensaje = "No se puede modificar el administrador.";
+				}else mensaje = "El campo de cédula está vacio.";
+			    request.setAttribute("color", color);
+			    request.setAttribute("mensaje", mensaje);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 				break;
 				
 			}else {
@@ -118,11 +142,17 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 				usuarioModificado.setUsuario(request.getParameter("usuario"));
 				usuarioModificado.setPassword(request.getParameter("password"));
 				mU.ModificarUsuario(indiceUsuario, usuarioModificado);
-				response.sendRedirect("usuariomodificado.jsp");
+				mensaje = "Usuario actualizado.";
+				color = "Blue";
+			    request.setAttribute("mensaje", mensaje);
+			    request.setAttribute("color", color);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 				break;
 			}else {
 				System.out.println("Error");
-				response.sendRedirect("usuarioerror.jsp");
+			    request.setAttribute("mensaje", mensaje);
+			    request.setAttribute("color", color);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 				break;
 			}
 			}
@@ -130,18 +160,27 @@ public class tgServlet_CrearUsuario extends HttpServlet {
 		case 3:
 			if (request.getParameter("cedula").equals("1")) {
 				System.out.println("Error: No se puede eliminar al administrador.");
-				response.sendRedirect("usuarioerror.jsp");
+				mensaje = "No se puede eliminar el administrador.";
+			    request.setAttribute("mensaje", mensaje);
+			    request.setAttribute("color", color);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 				break;
 			}else {
 			try {
 				mU.EliminarUsuario(mU.ObtenerIndiceUsuario(Integer.parseInt(request.getParameter("cedula"))));
-				response.sendRedirect("usuarioeliminado.jsp");
+				mensaje = "Usuario eliminado.";
+				color = "Blue";
+			    request.setAttribute("mensaje", mensaje);
+			    request.setAttribute("color", color);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 				break;
 				
 			}
 			catch(Exception e) {
-				System.out.println("Error");
-				response.sendRedirect("usuarioerror.jsp");
+				mensaje = "El campo de cédula está vacio.";
+			    request.setAttribute("color", color);
+			    request.setAttribute("mensaje", mensaje);
+			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 			}
 			}
 		}

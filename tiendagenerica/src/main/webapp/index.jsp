@@ -22,6 +22,7 @@
             <button type="reset">Cancelar</button>
             </div>
         </form>
+        <p style="color:red">${mensaje}</p>
         </div>
 </body>
 </html>

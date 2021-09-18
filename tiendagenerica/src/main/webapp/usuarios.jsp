@@ -28,7 +28,7 @@
             <main class="main">
                 <div class="container">
                     <div class="container1">
-                    <form action="./tgServlet_CrearUsuario" method="post">
+                    <form action="./tgServlet_usuario_crud" method="post">
                         <div class="usuario1">
                             Cédula 
                             <input type="text" name="cedula" class="tres"><br>
@@ -51,6 +51,7 @@
                             <button name= 'button' type="submit" value="3">Borrar</button>
                         </div>
                     </form>
+                    <p style="color:${color}">${mensaje}</p>
                     </div>
                 </div>
             </main>

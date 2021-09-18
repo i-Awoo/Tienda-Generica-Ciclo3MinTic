@@ -1,7 +1,6 @@
 package co.edu.unbosque.tiendagenerica;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,18 +39,20 @@ public class tgServlet extends HttpServlet {
 		response.setContentType("text/html");
 		String usuario = request.getParameter("usuario");
 		String password = request.getParameter("password");
-		PrintWriter writer = response.getWriter();
+		String mensaje = "Usuario no existe, o credenciales incorrectas";
 		try {
 		if (mU.AprobarUsuario(usuario, password)==true){
-			writer.println("Logueado");
+			
 			response.sendRedirect("tiendagenerica.jsp");
 		}
 		else {
-			response.sendRedirect("indexError.jsp");
-			writer.println("Usuario no existe, o credenciales incorrectas");
+			//response.sendRedirect("indexError.jsp");
+		    request.setAttribute("mensaje", mensaje);
+		    request.getRequestDispatcher("index.jsp").forward(request,response);
+			
 		}
 		}catch(Exception e){
-			writer.println("Error: "+e.getMessage());
+			
 			
 		}
 
