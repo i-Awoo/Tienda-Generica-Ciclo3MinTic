@@ -174,7 +174,7 @@ public class tgServlet_clientes_crud extends HttpServlet {
 				
 			}
 			catch(Exception e) {
-				mensaje = "El campo de cédula está vacio.";
+				mensaje = "El campo de cédula está vacio o no existe.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("clientes.jsp").forward(request,response);
