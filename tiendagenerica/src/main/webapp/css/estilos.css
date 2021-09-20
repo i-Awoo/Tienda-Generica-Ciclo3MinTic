@@ -79,8 +79,8 @@ h1{
 
 .container2{
     width: 85%;
-    max-width: 950px;
-	min-width: 950px;
+    max-width: 850px;
+	min-width: 850px;
     margin: 0 auto;
     font-size: 20px;
 }
@@ -92,8 +92,9 @@ h1{
     left: 0;
     top: 0;
     width: 100%; 
+    postion:fixed;
 	border-style: solid;
-	border-color: grey;
+	border-color: #A5A5A5;
 }
 .header a{
     color: white;
@@ -111,14 +112,13 @@ h1{
 }
 
 .navigation{
-	background: white;
 	color: #A5A5A5;
 	height: 50px;
 	left: 0;
     top: 95px;
     width: 100%;
 	border-bottom-style: solid;
-	border-color: grey;
+	border-color: #A5A5A5;
 }
 /* estilo botones navegacion cabezera página tienda genérica*/
 .navigation ul{
@@ -155,28 +155,41 @@ h1{
 }
 /* estilo pie de página tienda genérica*/
 .footer{
-    background: #A5A5A5;
+    background: grey;
     color: white;
     padding: 1rem 0;
     text-align: center;
     margin-top: 6rem;
+    width: 100%;
 }
 /* ajustes de estilo para diversos dispositivos*/
 @media only screen and (max-width: 767px) {
+	body{
+		width: 100%;
+	}
     .menu-icon{
+    	color: white;
+    	margin-top: 0;
+    	text-align: right;
+    	font-size:15pt;
         display: block;
         cursor: pointer;
         padding: 0.5rem 1rem;
     }
+    
     .navigation{
+    	color: white;
         width: 100%;
-        margin-top: 1rem;
+        margin-top: 0rem;
+        border: none;
     }
     .navigation ul{
         display: none;
     }
     .navigation ul.show{
         display: block;
+        background: #A5A5A5;
+        width: 100%;
     }
         .navigation ul li{
             display: block;
@@ -190,4 +203,32 @@ h1{
                 .navigation ul li a:hover{
                     background: #CCC;
                 }
+    footer{
+        width: 100%;
+    }
 }
+
+@media  only screen and (max-width: 994px) {
+    .usuario1{
+        float: inherit;
+        align-content: space-between;
+        
+    }
+    .usuario2{
+        float:initial;
+        align-content: space-between;
+    }
+    .uno{
+        margin-left: 0px;
+    }
+    .tres{
+        margin-left: 0px;
+    }
+    .cuatro{
+        margin-left: 0px;
+    }
+    .boton1 button{
+        margin-top: 5px;
+    }
+}
+

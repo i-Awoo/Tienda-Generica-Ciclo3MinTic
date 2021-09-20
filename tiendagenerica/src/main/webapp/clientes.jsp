@@ -13,10 +13,10 @@
                 <div class="container logo-nav-container">
                     <a href="tiendagenerica.jsp" class="logo">Tienda genérica</a>
 				</div>
-			</header>                  
-				  <!--span class="menu-icon">Ver menú</span>-->
-			
-                <nav class="navigation">
+				
+			</header>
+				<nav class="navigation">
+				<span class="menu-icon">Ver menú</span>
 					<div class="container logo-nav-container">
                         <ul>
                         <li><a href="usuarios.jsp">Usuarios</a></li>
@@ -66,5 +66,7 @@
                     <p>Página diseñada por GRUPO 01-17</p>
                 </div>
             </footer>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="js/scripts.js"></script>
         </body>
     </html>
