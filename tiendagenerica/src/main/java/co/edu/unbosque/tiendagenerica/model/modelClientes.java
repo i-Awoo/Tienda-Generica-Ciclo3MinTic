@@ -12,14 +12,14 @@ import java.util.List;
 public class modelClientes {
 	
 	public List<cliente> clientes;
-	private final String rutaCSV = "clientes.csv";
+	private final String rutaCSV = "C:/tmp/clientes.csv";
 	
 	//Se crea la lista en la que se guardaran los clientes
 	public void CrearLista() throws IOException {
 		clientes = new ArrayList<>();
 		System.out.println("Lista creada");
 
-		if (ExisteArchivoCSV()) {System.out.println("CSV:Clientes ya existe, omitiendo creaciÃ³n.");
+		if (ExisteArchivoCSV()) {System.out.println("CSV:Clientes ya existe, omitiendo creación.");
 		}
 		else {
 			System.out.println("Creando CSV:Clientes");
@@ -42,7 +42,7 @@ public class modelClientes {
 	private void CrearArchivoCSV() throws IOException {
 		final String NEXT_LINE = "\n";
 		final String delim = ",";
-		String rutaDelArchivo = new File("").getAbsolutePath();
+		String rutaDelArchivo = new File("C:/tmp/").getAbsolutePath();
 		System.out.println(rutaDelArchivo);
 		FileWriter fw = new FileWriter(rutaCSV);
 		try {
@@ -116,7 +116,7 @@ public class modelClientes {
 	public void Modificar(int id, cliente nuevosDatoscliente) throws IOException {
 		clientes.set(id, nuevosDatoscliente);
 		this.ActualizarLista();
-		System.out.println("Se modificÃ³ el cliente");
+		System.out.println("Se modificó el cliente");
 		
 	}
 	
@@ -124,7 +124,7 @@ public class modelClientes {
 	public void Eliminar(int id) throws IOException {
 		clientes.remove(id);
 		this.ActualizarLista();
-		System.out.println("Se eliminÃ³ el cliente");
+		System.out.println("Se eliminó el cliente");
 	}
 	
 	//Modelo para obtener los clientes en el CSV.
@@ -162,7 +162,7 @@ public class modelClientes {
 				else tempcliente.setDireccion(clientesStrings[2]);
 				}
 				catch (Exception e) {
-					System.out.println("cliente con cedula "+clientesStrings[0]+" no pudo agregarse correctamente, Falta direcciÃ³n.");
+					System.out.println("cliente con cedula "+clientesStrings[0]+" no pudo agregarse correctamente, Falta dirección.");
 				}
 				try {
 				if (clientesStrings[3].isEmpty()) {}
@@ -176,7 +176,7 @@ public class modelClientes {
 				else tempcliente.setTelefono(clientesStrings[4]);
 				}
 				catch (Exception e) {
-					System.out.println("cliente con cedula "+clientesStrings[0]+" no pudo agregarse correctamente, Falta telÃ©fono.");
+					System.out.println("cliente con cedula "+clientesStrings[0]+" no pudo agregarse correctamente, Falta teléfono.");
 				}
 				
 				listResult.add(tempcliente);

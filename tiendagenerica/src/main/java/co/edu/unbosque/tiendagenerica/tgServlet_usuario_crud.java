@@ -37,7 +37,7 @@ public class tgServlet_usuario_crud extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Informaci√≥n del usuario: ").append(request.getContextPath());
+		response.getWriter().append("InformaciÛn del usuario: ").append(request.getContextPath());
 		
 	}
 
@@ -47,7 +47,7 @@ public class tgServlet_usuario_crud extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println( "pulsaste el bot√≥n " + request.getParameter("button"));
+		System.out.println( "pulsaste el botÛn " + request.getParameter("button"));
 		int botonPulsado = Integer.parseInt(request.getParameter("button"));
 		String color = "red";
 		String mensaje = "Error";
@@ -59,7 +59,7 @@ public class tgServlet_usuario_crud extends HttpServlet {
 		case 0:
 			if (request.getParameter("cedula").isBlank()){
 				System.out.println("Error");
-				mensaje = "El campo de c√©dula est√° vacio.";
+				mensaje = "El campo de cÈdula est·° vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
@@ -74,11 +74,11 @@ public class tgServlet_usuario_crud extends HttpServlet {
 				out.println("<center>");
 				
 				out.println("Usuario encontrado:<br>");
-				out.println("C√©dula: "+cacheUsuario.getCedula());
+				out.println("CÈdula: "+cacheUsuario.getCedula());
 				out.println("<br>Nombre: "+cacheUsuario.getNombre());
 				out.println("<br>Correo: "+cacheUsuario.getCorreo());
 				out.println("<br>Usuario: "+cacheUsuario.getUsuario());
-				out.println("<br>Contrase√±a: "+cacheUsuario.getPassword());
+				out.println("<br>Contrase·±a: "+cacheUsuario.getPassword());
 				
 				break;
 			}
@@ -115,18 +115,18 @@ public class tgServlet_usuario_crud extends HttpServlet {
 			}
 			catch(Exception e){
 				System.out.println("Error");
-				mensaje = "El campo de c√©dula est√° vacio.";
+				mensaje = "El campo de cÈdula est·° vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
 			}
-			//Modificar el usuario usando el formulario, se usa el n√∫mero de cedula para modificarlo.
+			//Modificar el usuario usando el formulario, se usa el n·∫mero de cedula para modificarlo.
 		case 2:
 			if (request.getParameter("cedula").equals("1") || request.getParameter("cedula").isBlank()) {
 				System.out.println("Error: No se puede modificar al administrador.");
 				if (request.getParameter("cedula").equals("1")) {
 				mensaje = "No se puede modificar el administrador.";
-				}else mensaje = "El campo de c√©dula est√° vacio.";
+				}else mensaje = "El campo de cÈdula est·° vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);
@@ -177,7 +177,7 @@ public class tgServlet_usuario_crud extends HttpServlet {
 				
 			}
 			catch(Exception e) {
-				mensaje = "El campo de c√©dula est√° vacio.";
+				mensaje = "El campo de cÈdula est·° vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("usuarios.jsp").forward(request,response);

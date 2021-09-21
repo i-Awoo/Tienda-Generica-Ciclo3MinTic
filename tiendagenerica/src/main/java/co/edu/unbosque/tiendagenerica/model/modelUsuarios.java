@@ -12,14 +12,14 @@ import java.util.List;
 public class modelUsuarios {
 	
 	public List<usuario> usuarios;
-	private final String rutaCSV = "usuarios.csv";
+	private final String rutaCSV = "C:/tmp/usuarios.csv";
 	
 	//Se crea la lista en la que se guardaran los usuarios
 	public void CrearLista() throws IOException {
 		usuarios = new ArrayList<>();
 		System.out.println("Lista creada");
 
-		if (ExisteArchivoCSV()) {System.out.println("CSV ya existe, omitiendo creaciÃ³n.");
+		if (ExisteArchivoCSV()) {System.out.println("CSV ya existe, omitiendo creación.");
 		}
 		else {
 			System.out.println("Creando CSV");
@@ -46,7 +46,11 @@ public class modelUsuarios {
 	private void CrearArchivoCSV() throws IOException {
 		final String NEXT_LINE = "\n";
 		final String delim = ",";
-		String rutaDelArchivo = new File("").getAbsolutePath();
+		File f1 = new File("C:/tmp/");
+		boolean bool = f1.mkdir();
+		if (bool) System.out.println("Directorio creado");
+		String rutaDelArchivo = new File("C:/tmp/").getAbsolutePath();
+		
 		System.out.println(rutaDelArchivo);
 		FileWriter fw = new FileWriter(rutaCSV);
 		try {
@@ -132,7 +136,7 @@ public class modelUsuarios {
 	public void ModificarUsuario(int id, usuario nuevosDatosUsuario) throws IOException {
 		usuarios.set(id, nuevosDatosUsuario);
 		this.ActualizarListaUsuarios();
-		System.out.println("Se modificÃ³ el usuario");
+		System.out.println("Se modificó el usuario");
 		
 	}
 	
@@ -140,7 +144,7 @@ public class modelUsuarios {
 	public void EliminarUsuario(int id) throws IOException {
 		usuarios.remove(id);
 		this.ActualizarListaUsuarios();
-		System.out.println("Se eliminÃ³ el usuario");
+		System.out.println("Se eliminó el usuario");
 	}
 	
 	//Modelo para obtener los usuarios en el CSV.

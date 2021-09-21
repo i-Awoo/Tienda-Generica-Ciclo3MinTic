@@ -40,7 +40,7 @@ public class tgServlet_clientes_crud extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Informaci√≥n del cliente: ").append(request.getContextPath());
+		response.getWriter().append("InformaciÛn del cliente: ").append(request.getContextPath());
 		
 	}
 
@@ -50,7 +50,7 @@ public class tgServlet_clientes_crud extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println( "pulsaste el bot√≥n " + request.getParameter("button"));
+		System.out.println( "pulsaste el botÛn " + request.getParameter("button"));
 		int botonPulsado = Integer.parseInt(request.getParameter("button"));
 		String color = "red";
 		String mensaje = "Error";
@@ -62,7 +62,7 @@ public class tgServlet_clientes_crud extends HttpServlet {
 		case 0:
 			if (request.getParameter("cedula").isBlank()){
 				System.out.println("Error");
-				mensaje = "El campo de c√©dula est√° vacio.";
+				mensaje = "El campo de cÈdula est·° vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("clientes.jsp").forward(request,response);
@@ -77,9 +77,9 @@ public class tgServlet_clientes_crud extends HttpServlet {
 				out.println("<center>");
 				
 				out.println("cliente encontrado:<br>");
-				out.println("C√©dula: "+cacheCliente.getCedula());
+				out.println("CÈdula: "+cacheCliente.getCedula());
 				out.println("<br>Nombre: "+cacheCliente.getNombre());
-				out.println("<br>Direcci√≥n: "+cacheCliente.getDireccion());
+				out.println("<br>DirecciÛn: "+cacheCliente.getDireccion());
 				out.println("<br>Correo: "+cacheCliente.getCorreo());
 				out.println("<br>Telefono: "+cacheCliente.getTelefono());
 				
@@ -118,16 +118,16 @@ public class tgServlet_clientes_crud extends HttpServlet {
 			}
 			catch(Exception e){
 				System.out.println("Error");
-				mensaje = "El campo de c√©dula est√° vacio.";
+				mensaje = "El campo de cÈdula est·° vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("clientes.jsp").forward(request,response);
 			}
-			//Modificar el cliente usando el formulario, se usa el n√∫mero de cedula para modificarlo.
+			//Modificar el cliente usando el formulario, se usa el n·∫mero de cedula para modificarlo.
 		case 2:
 			if (request.getParameter("cedula").isBlank()) {
 				System.out.println("Error.");
-				mensaje = "El campo de c√©dula est√° vacio.";
+				mensaje = "El campo de cÈdula est·° vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("clientes.jsp").forward(request,response);
@@ -174,7 +174,7 @@ public class tgServlet_clientes_crud extends HttpServlet {
 				
 			}
 			catch(Exception e) {
-				mensaje = "El campo de c√©dula est√° vacio o no existe.";
+				mensaje = "El campo de cÈdula est·° vacio o no existe.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("clientes.jsp").forward(request,response);

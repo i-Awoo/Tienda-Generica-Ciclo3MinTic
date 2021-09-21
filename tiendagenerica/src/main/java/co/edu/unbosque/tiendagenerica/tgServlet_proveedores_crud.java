@@ -40,7 +40,7 @@ public class tgServlet_proveedores_crud extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("InformaciÃ³n del proveedor: ").append(request.getContextPath());
+		response.getWriter().append("Información del proveedor: ").append(request.getContextPath());
 		
 	}
 
@@ -50,7 +50,7 @@ public class tgServlet_proveedores_crud extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println( "pulsaste el botÃ³n " + request.getParameter("button"));
+		System.out.println( "pulsaste el botón " + request.getParameter("button"));
 		int botonPulsado = Integer.parseInt(request.getParameter("button"));
 		String color = "red";
 		String mensaje = "Error";
@@ -62,7 +62,7 @@ public class tgServlet_proveedores_crud extends HttpServlet {
 		case 0:
 			if (request.getParameter("nit").isBlank()){
 				System.out.println("Error");
-				mensaje = "El campo de nit estÃ¡ vacio.";
+				mensaje = "El campo de nit está¡ vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("proveedores.jsp").forward(request,response);
@@ -79,8 +79,8 @@ public class tgServlet_proveedores_crud extends HttpServlet {
 				out.println("Proveedor encontrado:<br>");
 				out.println("nit: "+cacheproveedor.getNit());
 				out.println("<br>Nombre: "+cacheproveedor.getNombre());
-				out.println("<br>DirecciÃ³n: "+cacheproveedor.getDireccion());
-				out.println("<br>TelÃ©fono: "+cacheproveedor.getTelefono());
+				out.println("<br>Dirección: "+cacheproveedor.getDireccion());
+				out.println("<br>Teléfono: "+cacheproveedor.getTelefono());
 				out.println("<br>Ciudad: "+cacheproveedor.getCiudad());
 				
 				break;
@@ -118,16 +118,16 @@ public class tgServlet_proveedores_crud extends HttpServlet {
 			}
 			catch(Exception e){
 				System.out.println("Error");
-				mensaje = "El campo de nit estÃ¡ vacio.";
+				mensaje = "El campo de nit está¡ vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("proveedores.jsp").forward(request,response);
 			}
-			//Modificar el proveedor usando el formulario, se usa el nÃºmero de nit para modificarlo.
+			//Modificar el proveedor usando el formulario, se usa el náºmero de nit para modificarlo.
 		case 2:
 			if (request.getParameter("nit").isBlank()) {
 				System.out.println("Error.");
-				mensaje = "El campo de nit estÃ¡ vacio.";
+				mensaje = "El campo de nit está¡ vacio.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("proveedores.jsp").forward(request,response);
@@ -174,7 +174,7 @@ public class tgServlet_proveedores_crud extends HttpServlet {
 				
 			}
 			catch(Exception e) {
-				mensaje = "El campo de Nit estÃ¡ vacio o no existe.";
+				mensaje = "El campo de Nit está¡ vacio o no existe.";
 			    request.setAttribute("color", color);
 			    request.setAttribute("mensaje", mensaje);
 			    request.getRequestDispatcher("proveedores.jsp").forward(request,response);

@@ -12,14 +12,14 @@ import java.util.List;
 public class modelProveedores {
 	
 	public List<proveedor> proveedores;
-	private final String rutaCSV = "proveedores.csv";
+	private final String rutaCSV = "C:/tmp/proveedores.csv";
 	
 	//Se crea la lista en la que se guardaran los proveedores
 	public void CrearLista() throws IOException {
 		proveedores = new ArrayList<>();
 		System.out.println("Lista creada");
 
-		if (ExisteArchivoCSV()) {System.out.println("CSV:proveedores ya existe, omitiendo creaciÃ³n.");
+		if (ExisteArchivoCSV()) {System.out.println("CSV:proveedores ya existe, omitiendo creación.");
 		}
 		else {
 			System.out.println("Creando CSV:proveedores");
@@ -42,7 +42,7 @@ public class modelProveedores {
 	private void CrearArchivoCSV() throws IOException {
 		final String NEXT_LINE = "\n";
 		final String delim = ",";
-		String rutaDelArchivo = new File("").getAbsolutePath();
+		String rutaDelArchivo = new File("C:/tmp/").getAbsolutePath();
 		System.out.println(rutaDelArchivo);
 		FileWriter fw = new FileWriter(rutaCSV);
 		try {
@@ -116,7 +116,7 @@ public class modelProveedores {
 	public void Modificar(int id, proveedor nuevosDatosproveedor) throws IOException {
 		proveedores.set(id, nuevosDatosproveedor);
 		this.ActualizarLista();
-		System.out.println("Se modificÃ³ el proveedor");
+		System.out.println("Se modificó el proveedor");
 		
 	}
 	
@@ -124,7 +124,7 @@ public class modelProveedores {
 	public void Eliminar(int id) throws IOException {
 		proveedores.remove(id);
 		this.ActualizarLista();
-		System.out.println("Se eliminÃ³ el proveedor");
+		System.out.println("Se eliminó el proveedor");
 	}
 	
 	//Modelo para obtener los proveedores en el CSV.
@@ -162,14 +162,14 @@ public class modelProveedores {
 				else tempproveedor.setDireccion(proveedoresStrings[2]);
 				}
 				catch (Exception e) {
-					System.out.println("proveedor con nit "+proveedoresStrings[0]+" no pudo agregarse correctamente, Falta direcciÃ³n.");
+					System.out.println("proveedor con nit "+proveedoresStrings[0]+" no pudo agregarse correctamente, Falta dirección.");
 				}
 				try {
 				if (proveedoresStrings[3].isEmpty()) {}
 				else tempproveedor.setTelefono(proveedoresStrings[3]);
 				}
 				catch (Exception e) {
-					System.out.println("proveedor con nit "+proveedoresStrings[0]+" no pudo agregarse correctamente, Falta TelÃ©fono.");
+					System.out.println("proveedor con nit "+proveedoresStrings[0]+" no pudo agregarse correctamente, Falta Teléfono.");
 				}
 				try {
 				if (proveedoresStrings[4].isEmpty()) {}
