@@ -22,7 +22,7 @@
                         <li><a href="usuarios.jsp">Usuarios</a></li>
                         <li><a href="clientes.jsp">Clientes</a></li>
                         <li><a href="proveedores.jsp">Proveedores</a></li>
-                        <li><a href="#">Productos</a></li>
+                        <li><a href="productos.jsp">Productos</a></li>
                         <li><a href="#">Ventas</a></li>
                         <li><a href="#">Reportes</a></li>
                         </ul>
@@ -31,10 +31,10 @@
                 
             
             <main class="main">
-                <div class="container2">
+               <!--  <div class="container2">-->
                     <div class="container1">
                     <form action="./tgServlet_clientes_crud" method="post">
-                        <div class="usuario1">
+                        <div class="usuario3">
                             Cédula 
                             <input type="text" name="cedula" class="tres"><br>
                             Nombre Completo  
@@ -42,7 +42,7 @@
                             Dirección 
                             <input type="text" name="direccion" class="seis"><br>
                         </div>
-                        <div class="usuario2">
+                        <div class="usuario4">
                             Telefono 
                             <input type="text" name="telefono" class="cinco"><br>
 							Correo electrónico
@@ -59,7 +59,7 @@
                     </form>
                     <p style="color:${color}">${mensaje}</p>
                     </div>
-                </div>
+               <!-- </div>-->
             </main>
             <footer class="footer">
                 <div class="container">
